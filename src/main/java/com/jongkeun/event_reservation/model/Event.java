@@ -28,6 +28,9 @@ public class Event {
     @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;
 
+    private String location;
+
+    // 예약자 이벤트 서로 호출, 순환 참조. 무한루프 가능성. Json Reference 사용
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<Reservation> reservations = new ArrayList<>();

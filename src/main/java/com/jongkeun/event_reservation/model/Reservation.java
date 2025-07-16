@@ -22,6 +22,7 @@ public class Reservation {
 
     private int seat;
 
+    // 예약자 이벤트 서로 호출, 순환 참조. 무한루프 가능성. Json Reference 사용
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "event_id", nullable = false)
     @JsonBackReference
